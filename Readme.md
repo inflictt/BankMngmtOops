@@ -7,7 +7,11 @@ A complete **bank management system** written in Python to practice core **Objec
 ![Status](https://img.shields.io/badge/status-active-success)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-> 🔗 **Live demo:** _add your `https://<your-subdomain>.streamlit.app` link here once deployed_
+## 🌐 Live Demo
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://inflicttbankmanagementsystem.streamlit.app/)
+
+Or directly: https://inflicttbankmanagementsystem.streamlit.app/
 
 ---
 
