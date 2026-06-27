@@ -1,0 +1,11 @@
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# local data (contains PINs, and cloud storage resets anyway)
+data.json
+
+# os
+.DS_Store
