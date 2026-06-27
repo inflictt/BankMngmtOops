@@ -18,11 +18,33 @@ class Bank:
         
     
     @staticmethod # not for all its a decorator
-    def update():
+    def __update():
         with open(Bank.database, "w", encoding="utf-8") as fs:
             fs.write(json.dumps(Bank.data)) #data dumping
 
+    @classmethod
+    def __accountNumGenerate(cls):
+        alpha = random.choices(string.ascii_letters, k=3)
+        num = random.choices(string.digits, k=3)
+        spchar = random.choices("!@#$%^&*", k=1)
 
+        account_id = alpha + num + spchar
+        random.shuffle(account_id)
+
+        return "".join(account_id)
+
+    def depositMoney(self): #first user valid accNum and pass
+        account_number = input("Enter your account number: ").strip()
+        pin = input("Enter your PIN: ").strip()
+        
+        # Validate account and pin
+        for account in self.data:
+            if account["account_number"] == account_number and account["pin"] == pin:
+                print("Account validated successfully")
+                return account
+        
+        print("Invalid account number or PIN")
+        return None
     
     # this is a public method
     def createBankAccount(self):
@@ -36,7 +58,8 @@ class Bank:
         if len(pin) != 4:
             print("PIN must be exactly 4 characters long.")
             return
-        account_number = random.randint(1000000000, 9999999999)
+        # account_number = cls.__accountNumGenerate()
+        account_number = self._Bank__accountNumGenerate()
         data = {
             "name": name,
             "age": age,
@@ -46,7 +69,7 @@ class Bank:
             "balance": 0
         }
         self.data.append(data)
-        self.update()
+        self.__update()
         print("Account has been successfully created")
 
 
@@ -71,6 +94,7 @@ while True:
         user.createBankAccount()
         print("Create Account selected")
     elif check == 2:
+        user.depositMoney()
         print("Deposit selected")
     elif check == 3:
         print("Withdraw selected")
